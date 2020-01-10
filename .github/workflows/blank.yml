@@ -9,15 +9,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
     - uses: actions/setup-node@v1
       with:
         node-version: 12
         registry-url: https://registry.npmjs.org/
     - run: npm i
-    - run: npm run build
+    - name: Build package
+      run: npm run build
+    - name: Build Storybook
+      run: npm run build:storybook
+    - name: Deploy Storybook
+      run: npm run deploy:storybook

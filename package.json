@@ -20,9 +20,9 @@
   "homepage": "https://yukipastelcat.github.io/svelte-fontawesome",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "build-storybook": "build-storybook -c .storybook -o .out",
+    "build:storybook": "build-storybook -c .storybook -o .out",
     "storybook": "start-storybook",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy:storybook": "storybook-to-ghpages"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26"

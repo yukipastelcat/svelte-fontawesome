@@ -13,11 +13,12 @@ jobs:
       with:
         node-version: 12
         registry-url: https://registry.npmjs.org/
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: npm i
     - name: Build package
       run: npm run build
+    - run: git remote set-url --push origin https://your_username:$GITHUB_TOKEN@github.com/your/repo
     - name: Deploy Storybook
       run: npm run deploy:storybook -- --ci
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

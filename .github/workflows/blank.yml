@@ -17,7 +17,7 @@ jobs:
     - name: Build package
       run: npm run build
     - name: Deploy Storybook
-      run: npm run deploy:storybook -- --ci --host-token-env-variable=GITHUB_TOKEN
+      run: npm run deploy:storybook -- --ci
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

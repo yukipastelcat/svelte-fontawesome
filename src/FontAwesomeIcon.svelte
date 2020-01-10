@@ -10,7 +10,7 @@
 
   export let border = false;
   export let fixedWidth = false;
-  export let flip = false;
+  export let flip = null;
   export let icon;
   export let mask = null;
   export let listItem = false;
@@ -85,8 +85,10 @@
     html = faIcon(iconDefinition, {
       styles: $$props.style ? _styles : {},
       classes: [...Object.keys(_classList).map(key => _classList[key] ? key : null).filter(key => !!key), ($$props.class || '').split(' ')],
-      ...transform,
-      ...mask,
+      transform: {
+        ...(typeof transform === 'string' ? faParse.transform(transform) : transform),
+      },
+      mask: _normalizeIconArgs(mask),
       symbol,
       title
     }).html;

@@ -50,7 +50,7 @@
     }
   }
 
-  let html;
+  let html = '';
 
   $: _classList = ({
     'fa-spin': spin,
@@ -80,6 +80,7 @@
     const iconDefinition = faFindIconDefinition(_normalizeIconArgs(icon));
     if (!iconDefinition) {
       console.warn('Could not find one or more icon(s)', iconDefinition, mask);
+      return;
     }
     html = faIcon(iconDefinition, {
       styles: $$props.style ? _styles : {},

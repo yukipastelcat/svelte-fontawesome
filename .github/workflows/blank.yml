@@ -13,13 +13,11 @@ jobs:
       with:
         node-version: 12
         registry-url: https://registry.npmjs.org/
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: npm i
     - name: Build package
       run: npm run build
-    - name: Build Storybook
-      run: npm run build:storybook
     - name: Deploy Storybook
-      run: npm run deploy:storybook -- -- --host-token-env-variable=GITHUB_TOKEN
+      run: npm run deploy:storybook -- --ci --host-token-env-variable=GITHUB_TOKEN
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -17,6 +17,7 @@
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.3.1"
   },
+  "homepage": "https://yukipastelcat.github.io/svelte-fontawesome",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "build-storybook": "build-storybook -c .storybook -o .out",
@@ -26,5 +27,12 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26"
   },
+  "files": [
+    "dist/fontawesome-svelte.js",
+    "src/FontAwesomeIcon.svelte",
+    "src/FontAwesomeLayers.svelte",
+    "src/FontAwesomeLayersText.svelte",
+    "src/index.js"
+  ],
   "author": "Kirill Sedunov <kirill.sedunov@outlook.com>"
 }

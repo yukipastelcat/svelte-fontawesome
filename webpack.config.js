@@ -7,8 +7,8 @@ module.exports = {
 	entry: './src/index.js',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'svelte-fontawesome.js',
-		library: 'svelte-fontawesome',
+		filename: 'fontawesome-svelte.js',
+		library: 'fontawesome-svelte',
 		libraryTarget: 'umd'
 	},
 	externals: [

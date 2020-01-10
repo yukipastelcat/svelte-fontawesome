@@ -19,4 +19,4 @@ jobs:
     - name: Build Storybook
       run: npm run build:storybook
     - name: Deploy Storybook
-      run: npm run deploy:storybook
+      run: npm run deploy:storybook -- --host-token-env-variable=GITHUB_TOKEN

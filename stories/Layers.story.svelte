@@ -3,9 +3,7 @@
   import { fas } from "@fortawesome/free-solid-svg-icons";
   import { far } from "@fortawesome/free-regular-svg-icons";
   import { fab } from "@fortawesome/free-brands-svg-icons";
-  import FontAwesomeIcon from "../src/FontAwesomeIcon.svelte";
-  import FontAwesomeLayers from "../src/FontAwesomeLayers.svelte";
-  import FontAwesomeLayersText from "../src/FontAwesomeLayersText.svelte";
+  import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '../src/index.js';
   import IconDisplay from "./commons/IconDisplay.svelte";
 
   library.add(fas, far, fab);

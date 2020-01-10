@@ -1,6 +1,6 @@
 {
   "name": "svelte-fontawesome",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.0",
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@fortawesome/free-brands-svg-icons": "^5.12.0",

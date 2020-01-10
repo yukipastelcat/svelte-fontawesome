@@ -1,6 +1,7 @@
-﻿import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
+﻿import { withKnobs, text, boolean, select, object } from "@storybook/addon-knobs";
 import Basic from './Basic.story.svelte';
 import Mask from './Mask.story.svelte';
+import Layers from './Layers.story.svelte';
 
 export default {
   title: 'FontAwesome',
@@ -42,7 +43,7 @@ export const basic = () => ({
     title: text('🔤 Title', 'wink'),
     inverse: boolean('⬜ Inverse', false),
     transform: text('⚡ Power transforms', ''),
-  }
+  },
 })
 
 export const masking = () => ({
@@ -81,3 +82,11 @@ export const masking = () => ({
     maskIconName: text('Icon name', 'comment', MASK_ICON_KNOBS_GROUP),
   }
 })
+
+
+export const layers = () => ({
+  Component: Layers,
+  props: {
+    fixedWidth: boolean('Fixed width', true),
+  }
+});

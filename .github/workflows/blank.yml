@@ -18,7 +18,7 @@ jobs:
     - run: npm i
     - name: Build package
       run: npm run build
-    - run: git remote set-url --push origin https://yukipastelcat:$GITHUB_TOKEN@github.com/your/repo
+    - run: git remote set-url --push origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
     - name: Deploy Storybook
       run: npm run deploy:storybook -- --ci
 

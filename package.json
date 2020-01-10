@@ -1,5 +1,5 @@
 {
-  "name": "svelte-fontawesome",
+  "name": "fontawesome-svelte",
   "version": "1.0.0-beta.0",
   "devDependencies": {
     "@babel/core": "^7.7.7",
@@ -7,6 +7,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.12.0",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@storybook/addon-knobs": "^5.2.8",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@storybook/svelte": "^5.2.8",
     "babel-loader": "^8.0.6",
     "cross-env": "^5.2.0",
@@ -18,7 +19,9 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "storybook": "start-storybook"
+    "build-storybook": "build-storybook -c .storybook -o .out",
+    "storybook": "start-storybook",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26"

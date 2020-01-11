@@ -32,7 +32,9 @@
     "src/FontAwesomeIcon.svelte",
     "src/FontAwesomeLayers.svelte",
     "src/FontAwesomeLayersText.svelte",
-    "src/index.js"
+    "src/index.js",
+    "README.md",
+    "LICENSE"
   ],
   "author": "Kirill Sedunov <kirill.sedunov@outlook.com>"
 }

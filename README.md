@@ -1,64 +1,142 @@
-# svelte app
+# fontawesome-svelte
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template-webpack.
+## Introduction
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+This package is for integrating [FontAwesome](https://fontawesome.com/) with Svelte.
+Inspired by [vue-fontawesome](https://github.com/FortAwesome/vue-fontawesome).
 
-```bash
-npx degit sveltejs/template-webpack svelte-app
-cd svelte-app
+Under the hood this package uses `@fortawesome/fontawesome-svg-core` library. You can find API docs [here](https://fontawesome.com/how-to-use/with-the-api/setup/getting-started).
+
+## Usage
+
+Maybe you're looking for ["Add more styles or Pro icons"](https://github.com/FortAwesome/vue-fontawesome#add-more-styles-or-pro-icons).
+
+Keep in mind that using Pro packages requires [additional configuration](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers).
+
+```
+<script>
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSmileWink as fasSmileWink } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '../src/index.js';
+
+library.add(faSmileWink);
+</script>
+
+<FontAwesomeIcon icon={fasSmileWink} />
+<FontAwesomeIcon icon={['fas', 'smile-wink']} />
+<!-- The solid style is implicit -->
+<FontAwesomeIcon icon="smile-wink" />
 ```
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+## Features
 
+### Basic
 
-## Get started
+#### [Size](https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons)
 
-Install the dependencies...
-
-```bash
-cd svelte-app
-npm install
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} size="xs" />
+<FontAwesomeIcon icon={['fas', 'smile-wink']} size="lg" />
+<FontAwesomeIcon icon={['fas', 'smile-wink']} size="6x" />
 ```
 
-...then start webpack:
+#### [Fixed width](https://fontawesome.com/how-to-use/on-the-web/styling/fixed-width-icons)
 
-```bash
-npm run dev
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} fixedWidth={true} />
 ```
 
-Navigate to [localhost:8080](http://localhost:8080). You should see your app running. Edit a component file in `src`, save it, and the page should reload with your changes.
+#### [Rotate](https://fontawesome.com/how-to-use/on-the-web/styling/rotating-icons)
 
-
-## Deploying to the web
-
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} rotation={180} />
 ```
 
-Then, from within your project folder:
+#### [Flip]
 
-```bash
-now
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} flip="horizontal" />
 ```
 
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} flip="vertical" />
 ```
 
-Then, from within your project folder:
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} flip="both" />
+```
 
-```bash
-npm run build
-surge public
+#### Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling/animating-icons)
+
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} spin={true} />
+```
+
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} pulse={true} />
+```
+
+#### [Border](https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons)
+
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} border={true} />
+```
+
+#### [Pull](https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons) left or right
+
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} pull="left" />
+<FontAwesomeIcon icon={['fas', 'smile-wink']} pull="right" />
+```
+
+#### [Invert](https://fontawesome.com/how-to-use/on-the-web/styling/stacking-icons)
+
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} inverse={true} />
+```
+
+#### [Swap opacity](https://fontawesome.com/how-to-use/on-the-web/styling/duotone-icons#swapping-layers)
+
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} swapOpacity={true} />
+```
+
+### Advanced
+
+#### [Power transforms](https://fontawesome.com/how-to-use/on-the-web/styling/power-transforms)
+
+```
+<FontAwesomeIcon icon={['fas', 'smile-wink']} transform="shrink-6 left-4" />
+<FontAwesomeIcon icon={['fas', 'smile-wink']} transform={ { rotate: 45 } } />
+```
+
+#### [Masking](https://fontawesome.com/how-to-use/on-the-web/styling/masking)
+
+```
+<FontAwesomeIcon icon={['fas', 'pencil-alt']} mask={['fas', 'comment']} transform="shrink-10 up-.5" />
+<FontAwesomeIcon icon={fasPencilAlt} mask={fasComment} transform="shrink-10 up-.5">
+```
+
+#### [Symbols](https://fontawesome.com/how-to-use/on-the-web/advanced/svg-symbols)
+
+```
+<FontAwesomeIcon icon={['fas', 'pencil-alt']} symbol={true} />
+<FontAwesomeIcon icon={['fas', 'pencil-alt']} symbol="pencil-alt" />
+```
+
+#### [Layers](https://fontawesome.com/how-to-use/on-the-web/styling/layering)
+
+```
+<FontAwesomeLayers class="fa-6x">
+  <FontAwesomeIcon icon={['fas', 'circle']} style="color: tomato" />
+  <FontAwesomeIcon icon={['fas', 'times']} transform="shrink-6" inverse={true} />
+</FontAwesomeLayers>
+<FontAwesomeLayers class="fa-6x">
+  <FontAwesomeIcon icon={['fas', 'certificate']} />
+  <FontAwesomeLayersText class="fa-inverse" transform="shrink-11.5 rotate--30" style="font-weight: 900; font-family: sans-serif;" value="NEW" />
+</FontAwesomeLayers>
+<FontAwesomeLayers class="fa-6x">
+  <FontAwesomeIcon icon={['fas', 'envelope']} />
+  <FontAwesomeLayersText counter={true} style="background: tomato; font-family: sans-serif;" value="1,419" />
+</FontAwesomeLayers>
 ```

@@ -2,15 +2,21 @@
   "name": "fontawesome-svelte",
   "version": "1.0.0-beta.0",
   "devDependencies": {
-    "@babel/core": "^7.7.7",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
     "@fortawesome/free-brands-svg-icons": "^5.12.0",
     "@fortawesome/free-regular-svg-icons": "^5.12.0",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@storybook/addon-knobs": "^5.2.8",
     "@storybook/storybook-deployer": "^2.8.1",
     "@storybook/svelte": "^5.2.8",
+    "@testing-library/jest-dom": "^5.0.2",
+    "@testing-library/svelte": "^1.11.0",
+    "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
     "cross-env": "^5.2.0",
+    "jest": "^25.1.0",
+    "jest-transform-svelte": "^2.1.1",
     "svelte": "^3.0.0",
     "svelte-loader": "^2.13.3",
     "webpack": "^4.30.0",
@@ -22,7 +28,8 @@
     "build": "cross-env NODE_ENV=production webpack",
     "build:storybook": "build-storybook -c .storybook -o .out",
     "storybook": "start-storybook",
-    "deploy:storybook": "storybook-to-ghpages"
+    "deploy:storybook": "storybook-to-ghpages",
+    "test": "jest"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26"
@@ -36,5 +43,11 @@
     "README.md",
     "LICENSE"
   ],
-  "author": "Kirill Sedunov <kirill.sedunov@outlook.com>"
+  "author": "Kirill Sedunov <kirill.sedunov@outlook.com>",
+  "keywords": [
+    "fontawesome",
+    "svelte",
+    "icon",
+    "front-end"
+  ]
 }

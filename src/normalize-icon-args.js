@@ -1,4 +1,4 @@
-﻿export default function _normalizeIconArgs(icon) {
+﻿export default function normalizeIconArgs(icon) {
   if (icon === null) {
     return icon;
   }

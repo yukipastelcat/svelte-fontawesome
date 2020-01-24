@@ -21,7 +21,7 @@ function renderWink(props = {}) {
   return createIcon({ icon: faSmileWink, ...props });
 }
 
-describe('FontAwesomeIcon', () => {
+describe('🧱 FontAwesomeIcon', () => {
   test('does not render component if passed icon wasn\'t found', () => {
     const containerA = createIcon({ icon: ['fal', 'book'] });
     const containerB = createIcon({ icon: weirdIconDefinition });

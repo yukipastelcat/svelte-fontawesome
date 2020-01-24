@@ -50,5 +50,6 @@
     "svelte",
     "icon",
     "front-end"
-  ]
+  ],
+  "license": "MIT"
 }

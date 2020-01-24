@@ -43,6 +43,7 @@ export const basic = () => ({
     title: text('🔤 Title', 'wink'),
     inverse: boolean('⬜ Inverse', false),
     transform: text('⚡ Power transforms', ''),
+    symbol: text('💠 Symbol', '')
   },
 })
 

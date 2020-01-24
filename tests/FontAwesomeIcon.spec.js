@@ -1,4 +1,4 @@
-﻿import { cleanup, render } from '@testing-library/svelte';
+﻿import { render } from '@testing-library/svelte';
 import FontAwesomeIcon from '../src/FontAwesomeIcon.svelte';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faAddressBook } from '@fortawesome/free-regular-svg-icons';
@@ -43,6 +43,18 @@ describe('FontAwesomeIcon', () => {
     library.add(faFacebook);
     const container = createIcon({ icon: ['fab', 'facebook'] });
     expect(container.querySelector('[data-icon="facebook"]')).not.toBe(null);
+  });
+  test('does apply passed class attribute', () => {
+    const CUSTOM_CLASS = 'custom-class';
+    const container = renderWink({ class: CUSTOM_CLASS });
+    const svg = container.querySelector('svg');
+    expect([...svg.classList].includes(CUSTOM_CLASS)).toBe(true);
+  });
+  test('does apply passed style attribute', () => {
+    const CUSTOM_STYLE = 'color: red;';
+    const container = renderWink({ style: CUSTOM_STYLE });
+    const svg = container.querySelector('svg');
+    expect(svg.getAttribute('style')).toBe(CUSTOM_STYLE);
   });
   describe('correctly handles properties', () => {
     const NOT_PROVIDED_CASE = 'not provided';
@@ -249,6 +261,82 @@ describe('FontAwesomeIcon', () => {
         const container = renderWink();
         const svg = container.querySelector('svg');
         expect([...svg.classList].includes(SPIN_CLASS)).toBe(false);
+      });
+    });
+    describe('`transform` property', () => {
+      const ROTATE_TRANSFORM_SELECTOR = 'g[transform*="rotate"]';
+      test('value as string', () => {
+        const container = renderWink({ transform: 'rotate-95' });
+        const g = container.querySelector(ROTATE_TRANSFORM_SELECTOR);
+        expect(g).not.toBe(null);
+      });
+      test('value as object', () => {
+        const container = renderWink({ transform: { rotate: 95 } });
+        const g = container.querySelector(ROTATE_TRANSFORM_SELECTOR);
+        expect(g).not.toBe(null);
+      });
+      test(NOT_PROVIDED_CASE, () => {
+        const container = renderWink();
+        const g = container.querySelector(ROTATE_TRANSFORM_SELECTOR);
+        expect(g).toBe(null);
+      });
+    });
+    describe('`symbol` property', () => {
+      test('false', () => {
+        const container = renderWink({ symbol: false });
+        const symbol = container.querySelector('symbol');
+        expect(symbol).toBe(null);
+      });
+      test('""', () => {
+        const container = renderWink({ symbol: '' });
+        const symbol = container.querySelector('symbol');
+        expect(symbol).toBe(null);
+      });
+      test('non-empty string value', () => {
+        const container = renderWink({ symbol: 'jotaro' });
+        const symbol = container.querySelector('#jotaro');
+        expect(symbol).not.toBe(null);
+      });
+      test(NOT_PROVIDED_CASE, () => {
+        const container = renderWink();
+        const symbol = container.querySelector('symbol');
+        expect(symbol).toBe(null);
+      });
+    });
+    describe('`title` property', () => {
+      test('""', () => {
+        const container = renderWink({ title: '' });
+        const title = container.querySelector('title');
+        expect(title).toBe(null);
+      });
+      test('non-empty string value', () => {
+        const titleText = 'Oh, you\'re approaching me?';
+        const container = renderWink({ title: titleText });
+        const title = container.querySelector('title');
+        expect(title.innerHTML).toBe(titleText);
+      });
+      test(NOT_PROVIDED_CASE, () => {
+        const container = renderWink();
+        const title = container.querySelector('title');
+        expect(title).toBe(null);
+      });
+    });
+    describe('`inverse` property', () => {
+      const INVERSE_CLASS = 'fa-inverse';
+      test('false', () => {
+        const container = renderWink({ inverse: false });
+        const svg = container.querySelector('svg');
+        expect([...svg.classList].includes(INVERSE_CLASS)).toBe(false);
+      });
+      test('true', () => {
+        const container = renderWink({ inverse: true });
+        const svg = container.querySelector('svg');
+        expect([...svg.classList].includes(INVERSE_CLASS)).toBe(true);
+      });
+      test(NOT_PROVIDED_CASE, () => {
+        const container = renderWink();
+        const svg = container.querySelector('svg');
+        expect([...svg.classList].includes(INVERSE_CLASS)).toBe(false);
       });
     });
   });

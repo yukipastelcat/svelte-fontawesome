@@ -1,6 +1,6 @@
 ﻿import normalizeIconArgs from '../src/normalize-icon-args';
 
-describe('normaliseIconArgs()', () => {
+describe(`💫 ${normalizeIconArgs.name}()`, () => {
   const EXPECTED_KEYS = ['prefix', 'iconName'];
   test('undefined', () => {
     const result = normalizeIconArgs(undefined);

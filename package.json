@@ -27,10 +27,11 @@
   "homepage": "https://yukipastelcat.github.io/svelte-fontawesome",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "build:storybook": "build-storybook -c .storybook -o .out",
+    "storybook:build": "build-storybook -c .storybook -o .out",
     "storybook": "start-storybook",
-    "deploy:storybook": "storybook-to-ghpages",
-    "test": "jest"
+    "storybook:deploy": "storybook-to-ghpages",
+    "test": "jest --verbose",
+    "test:ci": "jest --coverage-reporters=lcov"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26"

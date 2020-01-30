@@ -16,6 +16,8 @@ Under the hood this package uses `@fortawesome/fontawesome-svg-core` library. Yo
 
 ## Usage
 
+This package relies on [`@fortawesome/fontawesome-svg-core`](https://www.npmjs.com/package/@fortawesome/fontawesome-svg-core).
+
 Maybe you're looking for ["Add more styles or Pro icons"](https://github.com/FortAwesome/vue-fontawesome#add-more-styles-or-pro-icons).
 
 Keep in mind that using Pro packages requires [additional configuration](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers).

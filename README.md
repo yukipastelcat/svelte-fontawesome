@@ -1,5 +1,12 @@
 # fontawesome-svelte
 
+![npm](https://img.shields.io/npm/v/fontawesome-svelte)
+![npm bundle size](https://img.shields.io/bundlephobia/min/fontawesome-svelte)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/yukipastelcat/svelte-fontawesome/CI/master?label=CI)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/yukipastelcat/svelte-fontawesome/CI/develop?label=CI%20%28beta%29)
+![David](https://img.shields.io/david/yukipastelcat/svelte-fontawesome)
+![David](https://img.shields.io/david/dev/yukipastelcat/svelte-fontawesome)
+
 ## Introduction
 
 This package is for integrating [FontAwesome](https://fontawesome.com/) with Svelte.
@@ -9,15 +16,17 @@ Under the hood this package uses `@fortawesome/fontawesome-svg-core` library. Yo
 
 ## Usage
 
+This package relies on [`@fortawesome/fontawesome-svg-core`](https://www.npmjs.com/package/@fortawesome/fontawesome-svg-core).
+
 Maybe you're looking for ["Add more styles or Pro icons"](https://github.com/FortAwesome/vue-fontawesome#add-more-styles-or-pro-icons).
 
 Keep in mind that using Pro packages requires [additional configuration](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers).
 
 ```html
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSmileWink as fasSmileWink } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '../src/index.js';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSmileWink as fasSmileWink } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from 'fontawesome-svelte';
 
 library.add(faSmileWink);
 </script>

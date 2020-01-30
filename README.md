@@ -22,9 +22,9 @@ Keep in mind that using Pro packages requires [additional configuration](https:/
 
 ```html
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSmileWink as fasSmileWink } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '../src/index.js';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSmileWink as fasSmileWink } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from 'fontawesome-svelte';
 
 library.add(faSmileWink);
 </script>

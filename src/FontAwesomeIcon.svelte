@@ -1,15 +1,18 @@
-﻿<script>
+﻿<svelte:options tag={null}/>
+
+<script>
   import {
     parse as faParse,
     icon as faIcon,
     findIconDefinition as faFindIconDefinition
   } from "@fortawesome/fontawesome-svg-core";
   import { beforeUpdate } from "svelte";
+  import normalizeIconArgs from './normalize-icon-args';
 
   export let border = false;
   export let fixedWidth = false;
   export let flip = null;
-  export let icon;
+  export let icon = null;
   export let mask = null;
   export let listItem = false;
   export let pull = null;
@@ -18,35 +21,10 @@
   export let swapOpacity = false;
   export let size = null;
   export let spin = false;
-  export let transform;
+  export let transform = {};
   export let symbol = false;
   export let title = null;
   export let inverse = false;
-
-  function _normalizeIconArgs(icon) {
-    if (icon === null) {
-      return icon;
-    }
-
-    if (typeof icon === "object" && icon.prefix && icon.iconName) {
-      return icon;
-    }
-
-    if (Array.isArray(icon) && icon.length === 2) {
-      let [prefix, iconName] = icon;
-      return {
-        prefix,
-        iconName
-      };
-    }
-
-    if (typeof icon === "string") {
-      return {
-        prefix: "fas",
-        iconName: icon
-      };
-    }
-  }
 
   let html = "";
 
@@ -76,28 +54,31 @@
     }, {});
 
   beforeUpdate(() => {
-    const iconDefinition = faFindIconDefinition(_normalizeIconArgs(icon));
-    if (!iconDefinition) {
-      console.warn("Could not find one or more icon(s)", iconDefinition, mask);
+    const iconArgs = normalizeIconArgs(icon);
+    if (!iconArgs) return;
+    const iconDefinition = faFindIconDefinition(iconArgs);
+    const result = faIcon(iconDefinition || icon, {
+        styles: $$props.style ? _styles : {},
+        classes: [
+          ...Object.keys(_classList)
+            .map(key => (_classList[key] ? key : null))
+            .filter(key => !!key),
+          ($$props.class || "").split(" ")
+        ],
+        transform: {
+          ...(typeof transform === "string"
+            ? faParse.transform(transform)
+            : transform)
+        },
+        mask: normalizeIconArgs(mask),
+        symbol,
+        title
+      });
+    if (!result) {
+      console.warn("Could not find one or more icon(s)", iconDefinition || icon, mask);
       return;
     }
-    html = faIcon(iconDefinition, {
-      styles: $$props.style ? _styles : {},
-      classes: [
-        ...Object.keys(_classList)
-          .map(key => (_classList[key] ? key : null))
-          .filter(key => !!key),
-        ($$props.class || "").split(" ")
-      ],
-      transform: {
-        ...(typeof transform === "string"
-          ? faParse.transform(transform)
-          : transform)
-      },
-      mask: _normalizeIconArgs(mask),
-      symbol,
-      title
-    }).html;
+    html = result.html;
   });
 </script>
 

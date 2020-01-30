@@ -1,4 +1,6 @@
-﻿<script>
+﻿<svelte:options tag={null}/>
+
+<script>
   import {
     config,
     parse as faParse,
@@ -7,13 +9,12 @@
   } from "@fortawesome/fontawesome-svg-core";
   import { beforeUpdate } from "svelte";
   export let value = "";
-  export let transform;
+  export let transform = {};
   export let counter = false;
   export let position = null;
 
   const { familyPrefix } = config;
   $: _classList = [
-    ...(counter ? [`${familyPrefix}-layers-counter`] : []),
     ...(position ? [`${familyPrefix}-layers-${position}`] : [])
   ];
 

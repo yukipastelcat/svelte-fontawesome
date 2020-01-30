@@ -2,11 +2,19 @@
 import Basic from './Basic.story.svelte';
 import Mask from './Mask.story.svelte';
 import Layers from './Layers.story.svelte';
+import { withTests } from "@storybook/addon-jest";
+import results from '../.jest-test-results.json';
 
 export default {
   title: 'FontAwesome',
-  decorators: [withKnobs]
-}
+  decorators: [
+    withKnobs,
+    withTests({
+      results,
+      filesExt: '.spec.js'
+    })
+  ],
+};
 
 const ICON_KNOBS_GROUP = 'Icon';
 const MASK_ICON_KNOBS_GROUP = 'Mask';
@@ -43,8 +51,15 @@ export const basic = () => ({
     title: text('🔤 Title', 'wink'),
     inverse: boolean('⬜ Inverse', false),
     transform: text('⚡ Power transforms', ''),
+    symbol: text('💠 Symbol', '')
   },
-})
+});
+
+basic.story = {
+  parameters: {
+    jest: ['FontAwesomeIcon']
+  }
+};
 
 export const masking = () => ({
   Component: Mask,
@@ -81,8 +96,13 @@ export const masking = () => ({
     maskIconPrefix: text('Icon prefix', 'fas', MASK_ICON_KNOBS_GROUP),
     maskIconName: text('Icon name', 'comment', MASK_ICON_KNOBS_GROUP),
   }
-})
+});
 
+masking.story = {
+  parameters: {
+    jest: ['FontAwesomeIcon']
+  }
+};
 
 export const layers = () => ({
   Component: Layers,
@@ -90,3 +110,9 @@ export const layers = () => ({
     fixedWidth: boolean('Fixed width', true),
   }
 });
+
+layers.story = {
+  parameters: {
+    jest: ['FontAwesomeLayers', 'FontAwesomeLayersText']
+  }
+}

@@ -13,7 +13,7 @@ Maybe you're looking for ["Add more styles or Pro icons"](https://github.com/For
 
 Keep in mind that using Pro packages requires [additional configuration](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers).
 
-```
+```html
 <script>
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSmileWink as fasSmileWink } from "@fortawesome/free-solid-svg-icons";
@@ -34,7 +34,7 @@ library.add(faSmileWink);
 
 #### [Size](https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons)
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} size="xs" />
 <FontAwesomeIcon icon={['fas', 'smile-wink']} size="lg" />
 <FontAwesomeIcon icon={['fas', 'smile-wink']} size="6x" />
@@ -42,62 +42,62 @@ library.add(faSmileWink);
 
 #### [Fixed width](https://fontawesome.com/how-to-use/on-the-web/styling/fixed-width-icons)
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} fixedWidth={true} />
 ```
 
 #### [Rotate](https://fontawesome.com/how-to-use/on-the-web/styling/rotating-icons)
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} rotation={180} />
 ```
 
-#### [Flip]
+#### Flip
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} flip="horizontal" />
 ```
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} flip="vertical" />
 ```
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} flip="both" />
 ```
 
 #### Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling/animating-icons)
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} spin={true} />
 ```
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} pulse={true} />
 ```
 
 #### [Border](https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons)
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} border={true} />
 ```
 
 #### [Pull](https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons) left or right
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} pull="left" />
 <FontAwesomeIcon icon={['fas', 'smile-wink']} pull="right" />
 ```
 
 #### [Invert](https://fontawesome.com/how-to-use/on-the-web/styling/stacking-icons)
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} inverse={true} />
 ```
 
 #### [Swap opacity](https://fontawesome.com/how-to-use/on-the-web/styling/duotone-icons#swapping-layers)
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} swapOpacity={true} />
 ```
 
@@ -105,28 +105,28 @@ library.add(faSmileWink);
 
 #### [Power transforms](https://fontawesome.com/how-to-use/on-the-web/styling/power-transforms)
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'smile-wink']} transform="shrink-6 left-4" />
 <FontAwesomeIcon icon={['fas', 'smile-wink']} transform={ { rotate: 45 } } />
 ```
 
 #### [Masking](https://fontawesome.com/how-to-use/on-the-web/styling/masking)
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'pencil-alt']} mask={['fas', 'comment']} transform="shrink-10 up-.5" />
 <FontAwesomeIcon icon={fasPencilAlt} mask={fasComment} transform="shrink-10 up-.5">
 ```
 
 #### [Symbols](https://fontawesome.com/how-to-use/on-the-web/advanced/svg-symbols)
 
-```
+```html
 <FontAwesomeIcon icon={['fas', 'pencil-alt']} symbol={true} />
 <FontAwesomeIcon icon={['fas', 'pencil-alt']} symbol="pencil-alt" />
 ```
 
 #### [Layers](https://fontawesome.com/how-to-use/on-the-web/styling/layering)
 
-```
+```html
 <FontAwesomeLayers class="fa-6x">
   <FontAwesomeIcon icon={['fas', 'circle']} style="color: tomato" />
   <FontAwesomeIcon icon={['fas', 'times']} transform="shrink-6" inverse={true} />

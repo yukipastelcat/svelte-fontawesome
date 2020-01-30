@@ -1,4 +1,6 @@
-﻿<script>
+﻿<svelte:options tag={null}/>
+
+<script>
   import {
     config,
     parse as faParse,
@@ -13,7 +15,6 @@
 
   const { familyPrefix } = config;
   $: _classList = [
-    ...(counter ? [`${familyPrefix}-layers-counter`] : []),
     ...(position ? [`${familyPrefix}-layers-${position}`] : [])
   ];
 

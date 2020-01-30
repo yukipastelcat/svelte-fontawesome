@@ -1,6 +1,19 @@
 {
   "name": "fontawesome-svelte",
   "version": "1.0.0-beta.0",
+  "main": "./dist/fontawesome-svelte.umd.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yukipastelcat/svelte-fontawesome.git"
+  },
+  "homepage": "https://yukipastelcat.github.io/svelte-fontawesome",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "build:storybook": "build-storybook -c .storybook -o .out",
+    "storybook": "start-storybook",
+    "test": "jest --verbose",
+    "test:ci": "jest --coverage-reporters=lcov --json --outputFile=.jest-test-results.json"
+  },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
@@ -9,7 +22,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@storybook/addon-jest": "^5.3.8",
     "@storybook/addon-knobs": "^5.2.8",
-    "@storybook/storybook-deployer": "^2.8.1",
     "@storybook/svelte": "^5.2.8",
     "@testing-library/jest-dom": "^5.0.2",
     "@testing-library/svelte": "^1.11.0",
@@ -24,27 +36,10 @@
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.3.1"
   },
-  "homepage": "https://yukipastelcat.github.io/svelte-fontawesome",
-  "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "storybook:build": "build-storybook -c .storybook -o .out",
-    "storybook": "start-storybook",
-    "storybook:deploy": "storybook-to-ghpages",
-    "test": "jest --verbose",
-    "test:ci": "jest --coverage-reporters=lcov"
-  },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.26"
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@storybook/addon-storysource": "^5.3.9"
   },
-  "files": [
-    "dist/fontawesome-svelte.js",
-    "src/FontAwesomeIcon.svelte",
-    "src/FontAwesomeLayers.svelte",
-    "src/FontAwesomeLayersText.svelte",
-    "src/index.js",
-    "README.md",
-    "LICENSE"
-  ],
   "author": "Kirill Sedunov <kirill.sedunov@outlook.com>",
   "keywords": [
     "fontawesome",

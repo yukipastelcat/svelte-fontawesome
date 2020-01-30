@@ -82,16 +82,90 @@ describe(`🧱 ${FontAwesomeLayersText.name}`, () => {
       });
     });
     describe('`counter` property', () => {
-      test('false', () => { });
-      test('true', () => { });
-      test(NOT_PROVIDED_CASE, () => { });
+      test('false', () => {
+        const container = renderLayersTextMock({
+          value: 'Sil-80',
+          counter: false,
+        });
+        const counter = container.querySelector('.fa-layers-counter');
+        expect(counter).toBe(null);
+      });
+      test('true', () => {
+        const hachiRoku = '86';
+        const container = renderLayersTextMock({
+          value: hachiRoku,
+          counter: true,
+        });
+        const counter = container.querySelector('.fa-layers-counter');
+        expect(counter).not.toBe(null);
+        expect(counter.innerHTML).toBe(hachiRoku);
+      });
+      test(NOT_PROVIDED_CASE, () => {
+        const container = renderLayersTextMock();
+        const counter = container.querySelector('.fa-layers-counter');
+        expect(counter).toBe(null);
+      });
     });
     describe('`position` property', () => {
-      test('"top-right"', () => { });
-      test('"top-left"', () => { });
-      test('"bottom-right"', () => { });
-      test('"bottom-left"', () => { });
-      test(NOT_PROVIDED_CASE, () => { });
+      const value = 'Cappuccino';
+      const [
+        TOP_RIGHT_CLASS,
+        TOP_LEFT_CLASS,
+        BOTTOM_RIGHT_CLASS,
+        BOTTOM_LEFT_CLASS
+      ] = [
+        'top-right',
+        'top-left',
+        'bottom-right',
+        'bottom-left'
+      ].map(item => `fa-layers-${item}`);
+      test('"top-right"', () => {
+        const container = renderLayersTextMock({
+          value,
+          position: 'top-right'
+        });
+        const text = container.querySelector('span');
+        expect([...text.classList].includes(TOP_RIGHT_CLASS)).toBe(true);
+      });
+      test('"top-left"', () => {
+        const container = renderLayersTextMock({
+          value,
+          position: 'top-left'
+        });
+        const text = container.querySelector('span');
+        expect([...text.classList].includes(TOP_LEFT_CLASS)).toBe(true);
+      });
+      test('"bottom-right"', () => {
+        const container = renderLayersTextMock({
+          value,
+          position: 'bottom-right'
+        });
+        const text = container.querySelector('span');
+        expect([...text.classList].includes(BOTTOM_RIGHT_CLASS)).toBe(true);
+      });
+      test('"bottom-left"', () => {
+        const container = renderLayersTextMock({
+          value,
+          position: 'bottom-left'
+        });
+        const text = container.querySelector('span');
+        expect([...text.classList].includes(BOTTOM_LEFT_CLASS)).toBe(true);
+      });
+      test(NOT_PROVIDED_CASE, () => {
+        const container = renderLayersTextMock({
+          value,
+        });
+        const text = container.querySelector('span');
+        expect(
+          [...text.classList]
+          .every(item => ![
+            TOP_RIGHT_CLASS,
+            TOP_LEFT_CLASS,
+            BOTTOM_RIGHT_CLASS,
+            BOTTOM_LEFT_CLASS
+          ].includes(item))
+        ).toBe(true);
+      });
     });
   });
 });

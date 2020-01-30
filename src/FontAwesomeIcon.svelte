@@ -1,4 +1,6 @@
-﻿<script>
+﻿<svelte:options tag={null}/>
+
+<script>
   import {
     parse as faParse,
     icon as faIcon,

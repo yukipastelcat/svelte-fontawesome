@@ -1,4 +1,6 @@
-﻿<script>
+﻿<svelte:options tag={null}/>
+
+<script>
 import { config } from '@fortawesome/fontawesome-svg-core';
 
 export let fixedWidth = false;

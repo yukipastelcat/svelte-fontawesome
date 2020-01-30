@@ -1,4 +1,4 @@
-﻿<svelte:options tag={null}/>
+<svelte:options tag={null}/>
 
 <script>
   import {

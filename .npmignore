@@ -1,6 +1,6 @@
 ﻿tests
 coverage
-webpack.config.js
+rollup.config.js
 jest.config.js
 .github
 .out
@@ -9,3 +9,4 @@ stories
 src
 .babelrc
 .jest-test-results.json
+*.code-workspace

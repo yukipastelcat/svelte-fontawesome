@@ -1,6 +1,6 @@
 {
   "name": "fontawesome-svelte",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "main": "./dist/fontawesome-svelte.umd.js",
   "repository": {
     "type": "git",

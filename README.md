@@ -1,5 +1,12 @@
 # fontawesome-svelte
 
+![npm](https://img.shields.io/npm/v/fontawesome-svelte)
+![npm bundle size](https://img.shields.io/bundlephobia/min/fontawesome-svelte)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/yukipastelcat/svelte-fontawesome/CI/master?label=CI)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/yukipastelcat/svelte-fontawesome/CI/develop?label=CI%20%28beta%29)
+![David](https://img.shields.io/david/yukipastelcat/svelte-fontawesome)
+![David](https://img.shields.io/david/dev/yukipastelcat/svelte-fontawesome)
+
 ## Introduction
 
 This package is for integrating [FontAwesome](https://fontawesome.com/) with Svelte.

@@ -21,6 +21,7 @@ export default {
       name,
       globals,
       file: pkg.main,
+      exports: 'named',
       format: 'umd',
     },
     {
@@ -33,8 +34,13 @@ export default {
     pluginSvelte({
       include: 'src/**/*.svelte',
     }),
-    pluginResolve(),
-    pluginCommonJs(),
+    pluginResolve({
+      jsnext: true,
+      main: true
+    }),
+    pluginCommonJs({
+      include: 'node_modules/**'
+    }),
     pluginBabel(),
     pluginTerser({
       compress: {

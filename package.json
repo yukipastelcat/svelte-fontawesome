@@ -12,8 +12,11 @@
     "build": "rollup -c",
     "build:storybook": "build-storybook -c .storybook -o .out",
     "storybook": "start-storybook",
+    "lint": "eslint --ignore-path .gitignore ./src",
+    "lint:fix": "npm run lint -- --fix",
     "test": "jest --verbose",
-    "test:ci": "jest --coverage-reporters=lcov --json --outputFile=.jest-test-results.json"
+    "test:ci": "jest --coverage-reporters=lcov --json --outputFile=.jest-test-results.json",
+    "pre-commit": "npm run lint:fix"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
@@ -31,6 +34,10 @@
     "@testing-library/svelte": "^1.11.0",
     "babel-jest": "^25.1.0",
     "cross-env": "^5.2.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "husky": "^4.2.1",
     "jest": "^25.1.0",
     "jest-transform-svelte": "^2.1.1",
     "rollup": "^1.30.1",
@@ -46,7 +53,9 @@
   "keywords": [
     "fontawesome",
     "svelte",
-    "icon",
+    "sveltejs",
+    "svelte3",
+    "icons",
     "front-end"
   ],
   "license": "MIT"

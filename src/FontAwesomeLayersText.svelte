@@ -1,11 +1,9 @@
-﻿<svelte:options tag={null}/>
-
-<script>
+﻿<script>
   import {
     config,
     parse as faParse,
     text as faText,
-    counter as faCounter,
+    counter as faCounter
   } from "@fortawesome/fontawesome-svg-core";
   import { beforeUpdate } from "svelte";
   export let value = "";
@@ -14,9 +12,7 @@
   export let position = null;
 
   const { familyPrefix } = config;
-  $: _classList = [
-    ...(position ? [`${familyPrefix}-layers-${position}`] : [])
-  ];
+  $: _classList = [...(position ? [`${familyPrefix}-layers-${position}`] : [])];
 
   $: _styles = ($$props.style || "")
     .split(";")
@@ -40,8 +36,9 @@
           ? faParse.transform(transform)
           : transform)
       }
-    }).html.join('');
+    }).html.join("");
   });
 </script>
 
+<svelte:options tag={null} />
 {@html renderedText}

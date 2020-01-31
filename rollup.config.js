@@ -15,15 +15,15 @@ export default {
   input: 'src/index.js',
   output: [
     {
-      file: pkg.main,
-      format: 'umd',
       name,
       globals,
+      file: pkg.main,
+      format: 'umd',
     },
     {
+      globals,
       file: pkg.module,
       format: 'esm',
-      globals,
     }
   ],
   plugins: [

@@ -1,5 +1,3 @@
-<svelte:options tag={null}/>
-
 <script>
   import {
     parse as faParse,
@@ -7,7 +5,7 @@
     findIconDefinition as faFindIconDefinition
   } from "@fortawesome/fontawesome-svg-core";
   import { beforeUpdate } from "svelte";
-  import normalizeIconArgs from './normalize-icon-args';
+  import normalizeIconArgs from "./normalize-icon-args";
 
   export let border = false;
   export let fixedWidth = false;
@@ -58,28 +56,33 @@
     if (!iconArgs) return;
     const iconDefinition = faFindIconDefinition(iconArgs);
     const result = faIcon(iconDefinition || icon, {
-        styles: $$props.style ? _styles : {},
-        classes: [
-          ...Object.keys(_classList)
-            .map(key => (_classList[key] ? key : null))
-            .filter(key => !!key),
-          ($$props.class || "").split(" ")
-        ],
-        transform: {
-          ...(typeof transform === "string"
-            ? faParse.transform(transform)
-            : transform)
-        },
-        mask: normalizeIconArgs(mask),
-        symbol,
-        title
-      });
+      symbol,
+      title,
+      styles: $$props.style ? _styles : {},
+      classes: [
+        ...Object.keys(_classList)
+          .map(key => (_classList[key] ? key : null))
+          .filter(key => !!key),
+        ($$props.class || "").split(" ")
+      ],
+      transform: {
+        ...(typeof transform === "string"
+          ? faParse.transform(transform)
+          : transform)
+      },
+      mask: normalizeIconArgs(mask)
+    });
     if (!result) {
-      console.warn("Could not find one or more icon(s)", iconDefinition || icon, mask);
+      console.warn(
+        "Could not find one or more icon(s)",
+        iconDefinition || icon,
+        mask
+      );
       return;
     }
     html = result.html;
   });
 </script>
 
+<svelte:options tag={null} />
 {@html html}

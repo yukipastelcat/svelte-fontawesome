@@ -12,6 +12,9 @@ const globals = {
 }
 
 export default {
+  external: [
+    '@fortawesome/fontawesome-svg-core'
+  ],
   input: 'src/index.js',
   output: [
     {

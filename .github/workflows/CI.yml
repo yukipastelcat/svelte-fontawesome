@@ -84,19 +84,18 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: dist
-      - name: Publish to npm.pkg.github.com
-        run: |
-          npm config set registry https://npm.pkg.github.com/@yukipastelcat
-          npm config set //npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_PACKAGES_TOKEN}}
       - name: Publish to registry.npmjs.org
         run: |
           npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Publish to npm.pkg.github.com
+        run: |
+          npm config set //npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN
+          npm publish --registry=https://npm.pkg.github.com/@yukipastelcat
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_PACKAGES_TOKEN}}
 
   publish-release:
     runs-on: ubuntu-latest

@@ -10,3 +10,4 @@ src
 .babelrc
 .jest-test-results.json
 *.code-workspace
+.eslintrc

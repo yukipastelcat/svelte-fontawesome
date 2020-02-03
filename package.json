@@ -11,7 +11,7 @@
   "homepage": "https://yukipastelcat.github.io/svelte-fontawesome",
   "scripts": {
     "build": "rollup -c",
-    "build:storybook": "build-storybook -c .storybook -o .out",
+    "build:storybook": "build-storybook -c .storybook -o .out --loglevel verbose",
     "storybook": "start-storybook",
     "lint": "eslint --ignore-path .gitignore ./src",
     "lint:fix": "npm run lint -- --fix",

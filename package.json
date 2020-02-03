@@ -11,16 +11,16 @@
   "homepage": "https://yukipastelcat.github.io/svelte-fontawesome",
   "scripts": {
     "build": "rollup -c",
-    "build:storybook": "build-storybook -c .storybook -o .out",
+    "build:storybook": "build-storybook -c .storybook -o .out --loglevel verbose",
     "storybook": "start-storybook",
     "lint": "eslint --ignore-path .gitignore ./src",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --verbose",
-    "test:ci": "jest --coverage-reporters=lcov --json --outputFile=.jest-test-results.json",
+    "test:ci": "jest --coverage-reporters=lcov --json --outputFile=stories/.jest-test-results.json",
     "pre-commit": "npm run lint:fix"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.3",
+    "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-brands-svg-icons": "^5.12.0",
@@ -34,6 +34,7 @@
     "@testing-library/jest-dom": "^5.0.2",
     "@testing-library/svelte": "^1.11.0",
     "babel-jest": "^25.1.0",
+    "babel-loader": "^8.0.6",
     "cross-env": "^5.2.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^14.0.0",
@@ -45,7 +46,8 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-svelte": "^5.1.1",
     "rollup-plugin-terser": "^5.2.0",
-    "svelte": "^3.0.0"
+    "svelte": "^3.0.0",
+    "svelte-loader": "^2.13.6"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26"

@@ -40,8 +40,8 @@ jobs:
 
   build-storybook:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    needs: build-package
+    # if: github.ref == 'refs/heads/master'
+    needs: run-tests
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1

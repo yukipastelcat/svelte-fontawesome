@@ -1,0 +1,147 @@
+﻿name: CI
+on: push
+
+jobs:
+  run-tests:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+      - name: Run tests
+        run: npm run test:ci
+      - name: Upload results
+        uses: actions/upload-artifact@v1
+        with:
+          name: .jest-test-results.json
+          path: stories/.jest-test-results.json
+
+  build-package:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop'
+    needs: run-tests
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+      - name: Build package
+        run: npm run build
+      - uses: actions/upload-artifact@v1
+        with:
+          name: dist
+          path: dist
+
+  build-storybook:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    needs: build-package
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+      - name: Download test results
+        uses: actions/download-artifact@v1
+        with:
+          name: .jest-test-results.json
+          path: ./stories
+      - name: Build Storybook
+        run: npm run build:storybook
+      - name: Upload Storybook build
+        uses: actions/upload-artifact@v1
+        with:
+          name: .out
+          path: .out
+
+  publish-beta:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    needs: build-package
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Setup git
+        run: |
+          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --global user.name "$GITHUB_ACTOR"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+      - name: Bump version
+        run: npm version prerelease --preid="beta"
+      - name: Push
+        run: git push
+      - name: Push tags
+        run: git push --tags
+      - name: Download artifacts
+        uses: actions/download-artifact@v1
+        with:
+          name: dist
+      - name: Publish to registry.npmjs.org
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Publish to npm.pkg.github.com
+        run: |
+          npm config set //npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN
+          npm publish --registry=https://npm.pkg.github.com/@yukipastelcat
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_PACKAGES_TOKEN}}
+
+  publish-release:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    needs: build-storybook
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Setup git
+        run: |
+            git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+            git config --global user.name "$GITHUB_ACTOR"
+            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+      - name: Bump version
+        run: npm version from-git
+      - name: Push
+        run: git push
+      - name: Push tags
+        run: git push --tags
+      - name: Download artifacts
+        uses: actions/download-artifact@v1
+        with:
+          name: dist
+      - name: Publish to registry.npmjs.org
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Publish to npm.pkg.github.com
+        run: |
+          npm config set //npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN
+          npm publish --registry=https://npm.pkg.github.com/@yukipastelcat
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_PACKAGES_TOKEN}}
+      - name: Download Storybook build
+        uses: actions/download-artifact@v1
+        with:
+          name: .out
+      - name: Publish Storybook to GitHub pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: .out

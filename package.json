@@ -1,40 +1,65 @@
 {
   "name": "fontawesome-svelte",
-  "version": "1.0.0-beta.0",
-  "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@fortawesome/free-brands-svg-icons": "^5.12.0",
-    "@fortawesome/free-regular-svg-icons": "^5.12.0",
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
-    "@storybook/addon-knobs": "^5.2.8",
-    "@storybook/storybook-deployer": "^2.8.1",
-    "@storybook/svelte": "^5.2.8",
-    "babel-loader": "^8.0.6",
-    "cross-env": "^5.2.0",
-    "svelte": "^3.0.0",
-    "svelte-loader": "^2.13.3",
-    "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.3.1"
+  "description": "@fortawesome/vue-fontawesome implementation for Svelte",
+  "version": "1.0.0-beta.14",
+  "main": "./dist/fontawesome-svelte.umd.js",
+  "module": "./dist/fontawesome-svelte.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yukipastelcat/svelte-fontawesome.git"
   },
   "homepage": "https://yukipastelcat.github.io/svelte-fontawesome",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "build:storybook": "build-storybook -c .storybook -o .out",
+    "build": "rollup -c",
+    "build:storybook": "build-storybook -c .storybook -o .out --loglevel verbose",
     "storybook": "start-storybook",
-    "deploy:storybook": "storybook-to-ghpages"
+    "lint": "eslint --ignore-path .gitignore ./src",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest --verbose",
+    "test:ci": "jest --coverage-reporters=lcov --json --outputFile=stories/.jest-test-results.json",
+    "pre-commit": "npm run lint:fix"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-brands-svg-icons": "^5.12.0",
+    "@fortawesome/free-regular-svg-icons": "^5.12.0",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "@storybook/addon-jest": "^5.3.8",
+    "@storybook/addon-knobs": "^5.2.8",
+    "@storybook/svelte": "^5.2.8",
+    "@testing-library/jest-dom": "^5.0.2",
+    "@testing-library/svelte": "^1.11.0",
+    "babel-jest": "^25.1.0",
+    "babel-loader": "^8.0.6",
+    "cross-env": "^5.2.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "husky": "^4.2.1",
+    "jest": "^25.1.0",
+    "jest-transform-svelte": "^2.1.1",
+    "rollup": "^1.30.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-svelte": "^5.1.1",
+    "rollup-plugin-terser": "^5.2.0",
+    "svelte": "^3.0.0",
+    "svelte-loader": "^2.13.6"
+  },
+  "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26"
   },
-  "files": [
-    "dist/fontawesome-svelte.js",
-    "src/FontAwesomeIcon.svelte",
-    "src/FontAwesomeLayers.svelte",
-    "src/FontAwesomeLayersText.svelte",
-    "src/index.js",
-    "README.md",
-    "LICENSE"
+  "author": "Kirill Sedunov <kirill.sedunov@outlook.com>",
+  "keywords": [
+    "fontawesome",
+    "svelte",
+    "sveltejs",
+    "svelte3",
+    "icons",
+    "front-end"
   ],
-  "author": "Kirill Sedunov <kirill.sedunov@outlook.com>"
+  "license": "MIT"
 }

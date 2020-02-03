@@ -53,6 +53,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: .jest-test-results.json
+          path: ./stories
       - name: Build Storybook
         run: npm run build:storybook
       - uses: actions/upload-artifact@v1

@@ -40,8 +40,8 @@ jobs:
 
   build-storybook:
     runs-on: ubuntu-latest
-    # if: github.ref == 'refs/heads/master'
-    needs: run-tests
+    if: github.ref == 'refs/heads/master'
+    needs: build-package
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -56,20 +56,11 @@ jobs:
           path: ./stories
       - name: Build Storybook
         run: npm run build:storybook
-      - uses: actions/upload-artifact@v1
+      - name: Upload Storybook build
+        uses: actions/upload-artifact@v1
         with:
           name: .out
           path: .out
-      - name: Download Storybook build
-        uses: actions/download-artifact@v1
-        with:
-          name: .out
-      - name: Publish Storybook to GitHub pages
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: .out
 
   publish-beta:
     runs-on: ubuntu-latest

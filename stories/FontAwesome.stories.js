@@ -3,7 +3,7 @@ import Basic from './Basic.story.svelte';
 import Mask from './Mask.story.svelte';
 import Layers from './Layers.story.svelte';
 import { withTests } from "@storybook/addon-jest";
-import results from '../.jest-test-results.json';
+import results from './.jest-test-results.json';
 
 export default {
   title: 'FontAwesome',

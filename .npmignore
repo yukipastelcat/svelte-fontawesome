@@ -5,8 +5,8 @@ jest.config.js
 .github
 .out
 .storybook
-stories
 src
+stories
 .babelrc
 .jest-test-results.json
 *.code-workspace

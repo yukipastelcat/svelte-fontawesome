@@ -9,43 +9,47 @@ import pkg from './package.json';
 const name = 'FontawesomeSvelte';
 const globals = {
   '@fortawesome/fontawesome-svg-core': 'FontAwesome'
-}
+};
+const input = 'src/index.js';
+const plugins = [
+  pluginSvelte(),
+  pluginResolve({
+    jsnext: true,
+    main: true
+  }),
+  pluginCommonJs({
+    include: 'node_modules/**'
+  }),
+  pluginBabel(),
+  pluginTerser({
+    compress: {
+      drop_console: false
+    }
+  }),
+];
 
-export default {
-  external: [
-    '@fortawesome/fontawesome-svg-core'
-  ],
-  input: 'src/index.js',
-  output: [
-    {
+export default [
+  {
+    external: [
+      '@fortawesome/fontawesome-svg-core'
+    ],
+    input,
+    output: {
+      globals,
+      file: pkg.module,
+      format: 'esm',
+    },
+    plugins
+  },
+  {
+    input,
+    output: {
       name,
       globals,
       file: pkg.main,
       exports: 'named',
       format: 'umd',
     },
-    {
-      globals,
-      file: pkg.module,
-      format: 'esm',
-    }
-  ],
-  plugins: [
-    pluginSvelte({
-      include: 'src/**/*.svelte',
-    }),
-    pluginResolve({
-      jsnext: true,
-      main: true
-    }),
-    pluginCommonJs({
-      include: 'node_modules/**'
-    }),
-    pluginBabel(),
-    pluginTerser({
-      compress: {
-        drop_console: false
-      }
-    }),
-  ]
-}
+    plugins
+  }
+];

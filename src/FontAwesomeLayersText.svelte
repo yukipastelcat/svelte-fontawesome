@@ -4,7 +4,7 @@
     parse as faParse,
     text as faText,
     counter as faCounter
-  } from "@fortawesome/fontawesome-svg-core";
+  } from "@fortawesome/fontawesome-svg-core/index.es";
   import { beforeUpdate } from "svelte";
   export let value = "";
   export let transform = {};

@@ -12,11 +12,7 @@ const globals = {
 };
 const input = 'src/index.js';
 const plugins = [
-  pluginSvelte(),
-  pluginResolve({
-    jsnext: true,
-    main: true
-  }),
+  pluginResolve(),
   pluginCommonJs({
     include: 'node_modules/**'
   }),
@@ -39,17 +35,24 @@ export default [
       file: pkg.module,
       format: 'esm',
     },
-    plugins
+    plugins: [
+      pluginSvelte(),
+      ...plugins,
+    ]
   },
   {
     input,
     output: {
       name,
-      globals,
       file: pkg.main,
       exports: 'named',
       format: 'umd',
     },
-    plugins
+    plugins: [
+      pluginSvelte({
+        generate: 'ssr'
+      }),
+      ...plugins,
+    ]
   }
 ];

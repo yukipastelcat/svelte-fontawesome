@@ -46,7 +46,7 @@ export default [
       name,
       file: pkg.main,
       exports: 'named',
-      format: 'umd',
+      format: 'cjs',
     },
     plugins: [
       pluginSvelte({

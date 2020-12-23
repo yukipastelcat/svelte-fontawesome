@@ -92,13 +92,6 @@ jobs:
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      - name: Publish to npm.pkg.github.com
-        run: |
-          npm init --scope=@yukipastelcat
-          npm config set //npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN
-          npm publish --registry=https://npm.pkg.github.com/
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_PACKAGES_TOKEN}}
 
   publish-release:
     runs-on: ubuntu-latest
@@ -130,12 +123,6 @@ jobs:
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      - name: Publish to npm.pkg.github.com
-        run: |
-          npm config set //npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN
-          npm publish --registry=https://npm.pkg.github.com/@yukipastelcat
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_PACKAGES_TOKEN}}
       - name: Download Storybook build
         uses: actions/download-artifact@v1
         with:

@@ -5,7 +5,6 @@ jest.config.js
 .github
 .out
 .storybook
-src
 stories
 .babelrc
 .jest-test-results.json

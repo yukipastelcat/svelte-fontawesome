@@ -2,7 +2,8 @@
   "name": "fontawesome-svelte",
   "description": "@fortawesome/vue-fontawesome implementation for Svelte",
   "version": "1.0.0-beta.15",
-  "main": "./dist/fontawesome-svelte.cjs.js",
+  "svelte": "./src/index.js",
+  "main": "./dist/fontawesome-svelte.umd.js",
   "module": "./dist/fontawesome-svelte.esm.js",
   "repository": {
     "type": "git",

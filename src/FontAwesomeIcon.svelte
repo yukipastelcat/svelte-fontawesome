@@ -3,7 +3,7 @@
     parse as faParse,
     icon as faIcon,
     findIconDefinition as faFindIconDefinition
-  } from "@fortawesome/fontawesome-svg-core";
+  } from "@fortawesome/fontawesome-svg-core/index.es";
   import { beforeUpdate } from "svelte";
   import normalizeIconArgs from "./normalize-icon-args";
 

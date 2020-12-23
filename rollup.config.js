@@ -40,19 +40,4 @@ export default [
       ...plugins,
     ],
   },
-  {
-    input,
-    output: {
-      name,
-      file: pkg.main,
-      exports: 'named',
-      format: 'umd',
-    },
-    plugins: [
-      pluginSvelte({
-        generate: 'ssr',
-      }),
-      ...plugins,
-    ],
-  },
 ];

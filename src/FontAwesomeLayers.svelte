@@ -1,5 +1,5 @@
 ﻿<script>
-  import { config } from "@fortawesome/fontawesome-svg-core/index.es";
+  import { config } from "@fortawesome/fontawesome-svg-core";
 
   export let fixedWidth = false;
 

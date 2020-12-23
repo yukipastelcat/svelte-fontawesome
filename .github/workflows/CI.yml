@@ -94,8 +94,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - name: Publish to npm.pkg.github.com
         run: |
+          npm init --scope=@yukipastelcat
           npm config set //npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN
-          npm publish --registry=https://npm.pkg.github.com/@yukipastelcat
+          npm publish --registry=https://npm.pkg.github.com/
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_PACKAGES_TOKEN}}
 

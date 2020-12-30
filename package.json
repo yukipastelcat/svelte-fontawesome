@@ -1,7 +1,7 @@
 {
   "name": "fontawesome-svelte",
   "description": "@fortawesome/vue-fontawesome implementation for Svelte",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "svelte": "./src/index.js",
   "main": "./src/index.js",
   "module": "./dist/fontawesome-svelte.esm.js",

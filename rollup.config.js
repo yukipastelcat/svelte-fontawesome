@@ -2,7 +2,7 @@
 import pluginResolve from '@rollup/plugin-node-resolve';
 import pluginCommonJs from '@rollup/plugin-commonjs';
 import { terser as pluginTerser } from 'rollup-plugin-terser';
-import pluginBabel from 'rollup-plugin-babel';
+import pluginBabel from '@rollup/plugin-babel';
 
 import pkg from './package.json';
 

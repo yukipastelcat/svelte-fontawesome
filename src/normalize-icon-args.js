@@ -22,5 +22,5 @@ export default function normalizeIconArgs(icon) {
     };
   }
 
-  return;
+  return undefined;
 }

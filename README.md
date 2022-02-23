@@ -28,7 +28,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSmileWink as fasSmileWink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from 'fontawesome-svelte';
 
-library.add(faSmileWink);
+library.add(fasSmileWink);
 </script>
 
 <FontAwesomeIcon icon={fasSmileWink} />

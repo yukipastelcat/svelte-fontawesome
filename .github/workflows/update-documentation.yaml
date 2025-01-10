@@ -23,7 +23,7 @@ jobs:
         id: cache-npm
         uses: actions/cache@v4
         env:
-          cache-name: cache-frontend-node-modules
+          cache-name: cache-node-modules
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
           path: ~/.npm

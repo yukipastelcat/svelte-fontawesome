@@ -7,7 +7,7 @@ export default function normalizeIconArgs(
   icon?: IconDefinition | [string, string] | string,
 ): IconLookup | undefined {
   if (!icon && icon !== "") {
-    return void 0;
+    return void icon;
   }
 
   if (Array.isArray(icon) && icon.length === 2) {

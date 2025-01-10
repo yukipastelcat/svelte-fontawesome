@@ -10,7 +10,7 @@ describe(`💫 ${normalizeIconArgs.name}()`, () => {
   });
   test("null", () => {
     const result = normalizeIconArgs(null);
-    expect(result).toBe(null);
+    expect(result).toBe(undefined);
   });
   test('""', () => {
     const result = normalizeIconArgs("");

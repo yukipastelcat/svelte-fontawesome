@@ -1,11 +1,11 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {},
-	"extensions": {
-		"recommendations": ["jamesbirtles.svelte-vscode"]
-	}
+  "folders": [
+    {
+      "path": ".",
+    },
+  ],
+  "settings": {},
+  "extensions": {
+    "recommendations": ["jamesbirtles.svelte-vscode"],
+  },
 }

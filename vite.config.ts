@@ -1,33 +1,24 @@
-import { resolve } from "path";
-import { defineConfig } from "vite";
-import { svelte } from "@sveltejs/vite-plugin-svelte";
-import { svelteTesting } from "@testing-library/svelte/vite";
-import dts from "vite-plugin-dts";
-import pkg from "./package.json";
+import { defineConfig } from 'vitest/config';
+import { sveltekit } from '@sveltejs/kit/vite';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+const file = fileURLToPath(new URL('package.json', import.meta.url));
+const json = readFileSync(file, 'utf8');
+const pkg = JSON.parse(json);
 
-// https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
-  plugins: [
-    dts({ tsconfigPath: "./tsconfig.app.json" }),
-    svelte(),
-    svelteTesting(),
-  ],
-  build: {
-    lib: {
-      entry: resolve(__dirname, "src/main.ts"),
-      name: "fontawesome-svelte",
-      formats: ["es"],
-      fileName: (format) =>
-        ({
-          es: `${pkg.name}.js`,
-        })[format],
-    },
-    rollupOptions: {
-      external: Object.keys(pkg.peerDependencies),
-    },
-  },
-  test: {
-    environment: "happy-dom",
-    globals: true,
-  },
+	plugins: [sveltekit()],
+	define: {
+		__APP_NAME__: JSON.stringify(pkg.name),
+		__APP_VERSION__: JSON.stringify(pkg.version)
+	},
+	resolve: {
+		conditions: mode === 'test' ? ['browser'] : []
+	},
+
+	test: {
+		environment: 'happy-dom',
+		globals: true,
+		include: ['src/**/*.{test,spec}.{js,ts}']
+	}
 }));

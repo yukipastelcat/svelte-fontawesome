@@ -147,7 +147,3 @@ library.add(fasSmileWink);
   <FontAwesomeLayersText counter={true} style="background: tomato; font-family: sans-serif;" value="1,419" />
 </FontAwesomeLayers>
 ```
-
-## Usage with Sapper
-
-Be aware, that you'll need to install this package as dev dependency in order to get it working with Sapper (according to [this issue](https://github.com/rob-balfre/svelte-select/issues/87))

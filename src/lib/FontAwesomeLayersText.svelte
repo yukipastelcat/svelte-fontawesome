@@ -47,7 +47,7 @@
 
 	let renderedText = $state('');
 
-	$effect.pre(() => {
+	function init() {
 		const renderMethod = counter ? faCounter : faText;
 		renderedText = renderMethod(value.toString(), {
 			styles: style ? _faStyles : {},
@@ -56,7 +56,13 @@
 				...(typeof transform === 'string' ? faParse.transform(transform) : transform)
 			}
 		}).html.join('');
+	}
+
+	$effect(() => {
+		init();
 	});
+
+	init();
 </script>
 
 <!-- eslint-disable-next-line svelte/no-at-html-tags -->

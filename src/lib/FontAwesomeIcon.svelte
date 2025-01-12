@@ -99,9 +99,9 @@
 		'fa-flip': flip === true,
 		'fa-flip-horizontal': ['both', 'horizontal'].includes(flip as string),
 		'fa-flip-vertical': ['both', 'vertical'].includes(flip as string),
-		[`fa-${size}`]: size !== null,
-		[`fa-rotate-${rotation}`]: rotation !== null,
-		[`fa-pull-${pull}`]: pull !== null,
+		[`fa-${size}`]: !!size,
+		[`fa-rotate-${rotation}`]: !!rotation,
+		[`fa-pull-${pull}`]: !!pull,
 		'fa-swap-opacity': swapOpacity,
 		'fa-bounce': bounce,
 		'fa-shake': shake,
@@ -125,7 +125,7 @@
 			}, {})
 	);
 
-	$effect.pre(() => {
+	function init() {
 		const iconArgs = normalizeIconArgs(icon);
 		if (!iconArgs) return;
 		const iconDefinition = faFindIconDefinition(iconArgs);
@@ -153,7 +153,13 @@
 			return;
 		}
 		html = result.html.join();
+	}
+
+	$effect(() => {
+		init();
 	});
+
+	init();
 </script>
 
 <!-- eslint-disable-next-line svelte/no-at-html-tags -->

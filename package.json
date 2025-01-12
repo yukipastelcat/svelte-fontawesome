@@ -16,6 +16,7 @@
 	],
 	"license": "MIT",
 	"scripts": {
+		"prettier:check": "prettier --check .",
 		"prettier:write": "prettier --write .",
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -25,7 +26,7 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint .",
+		"lint": "eslint .",
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run",
 		"storybook": "storybook dev -p 6006",
@@ -49,7 +50,7 @@
 		}
 	},
 	"peerDependencies": {
-		"@fortawesome/fontawesome-svg-core": "^1.2.26",
+		"@fortawesome/fontawesome-svg-core": "^6.7.2",
 		"svelte": "^5.0.0"
 	},
 	"devDependencies": {

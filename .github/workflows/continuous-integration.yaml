@@ -33,7 +33,9 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
       - name: Install packages
         run: npm ci
-      - name: Code style check
+      - name: Prettier check
+        run: npm run prettier:check
+      - name: Eslint check
         run: npm run lint
       - name: Unit tests
         run: npm test

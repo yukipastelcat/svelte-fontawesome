@@ -4,8 +4,6 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/min/fontawesome-svelte)
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/yukipastelcat/svelte-fontawesome/CI/master?label=CI)
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/yukipastelcat/svelte-fontawesome/CI/develop?label=CI%20%28beta%29)
-![David](https://img.shields.io/david/yukipastelcat/svelte-fontawesome)
-![David](https://img.shields.io/david/dev/yukipastelcat/svelte-fontawesome)
 
 ## Introduction
 
@@ -149,7 +147,3 @@ library.add(fasSmileWink);
   <FontAwesomeLayersText counter={true} style="background: tomato; font-family: sans-serif;" value="1,419" />
 </FontAwesomeLayers>
 ```
-
-## Usage with Sapper
-
-Be aware, that you'll need to install this package as dev dependency in order to get it working with Sapper (according to [this issue](https://github.com/rob-balfre/svelte-select/issues/87))

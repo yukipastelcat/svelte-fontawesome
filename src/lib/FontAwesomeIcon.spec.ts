@@ -282,7 +282,8 @@ describe(`🧱 ${FontAwesomeIcon.name}`, () => {
 			test(NOT_PROVIDED_CASE, () => {
 				const container = renderWink();
 				const svg = container.querySelector('svg') as SVGElement;
-				const classes = cases.map(([value, className]) => className);
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
+				const classes = cases.map(([_value, className]) => className);
 				expect(classes.every((item) => ![...svg.classList].includes(item))).toBe(true);
 			});
 		});

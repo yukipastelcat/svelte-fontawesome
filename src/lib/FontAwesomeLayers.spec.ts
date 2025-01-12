@@ -1,11 +1,10 @@
-// @ts-nocheck
 import { describe, test, expect } from 'vitest';
 import { render } from '@testing-library/svelte';
 import Layers from './__mocks__/Layers.svelte';
 import FontAwesomeLayers, { type FontAwesomeLayersProps } from './FontAwesomeLayers.svelte';
 import { faCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-function renderLayersMock(props: FontAwesomeLayersProps) {
+function renderLayersMock(props?: FontAwesomeLayersProps) {
 	const result = render(Layers, {
 		props
 	});
@@ -24,13 +23,13 @@ describe(`🧱 ${FontAwesomeLayers.name}`, () => {
 	test('does apply passed class attribute', () => {
 		const CUSTOM_CLASS = 'custom-class';
 		const container = renderLayersMock({ class: CUSTOM_CLASS });
-		const layers = container.querySelector('.fa-layers');
+		const layers = container.querySelector('.fa-layers') as HTMLElement;
 		expect([...layers.classList].includes(CUSTOM_CLASS)).toBe(true);
 	});
 	test('does apply passed style attribute', () => {
 		const CUSTOM_STYLE = 'color: red;';
 		const container = renderLayersMock({ style: CUSTOM_STYLE });
-		const layers = container.querySelector('.fa-layers');
+		const layers = container.querySelector('.fa-layers') as HTMLElement;
 		expect(layers.getAttribute('style')).toBe(CUSTOM_STYLE);
 	});
 	describe('correctly handles properties', () => {
@@ -38,15 +37,18 @@ describe(`🧱 ${FontAwesomeLayers.name}`, () => {
 		describe('`fixedWidth` property', () => {
 			test('false', () => {
 				const container = renderLayersMock({ fixedWidth: false });
-				expect([...container.querySelector('.fa-layers').classList].includes('fa-fw')).toBe(false);
+				const layers = container.querySelector('.fa-layers') as HTMLElement;
+				expect([...layers.classList].includes('fa-fw')).toBe(false);
 			});
 			test('true', () => {
 				const container = renderLayersMock({ fixedWidth: true });
-				expect([...container.querySelector('.fa-layers').classList].includes('fa-fw')).toBe(true);
+				const layers = container.querySelector('.fa-layers') as HTMLElement;
+				expect([...layers.classList].includes('fa-fw')).toBe(true);
 			});
 			test(NOT_PROVIDED_CASE, () => {
 				const container = renderLayersMock();
-				expect([...container.querySelector('.fa-layers').classList].includes('fa-fw')).toBe(false);
+				const layers = container.querySelector('.fa-layers') as HTMLElement;
+				expect([...layers.classList].includes('fa-fw')).toBe(false);
 			});
 		});
 	});

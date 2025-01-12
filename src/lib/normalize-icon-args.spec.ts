@@ -1,7 +1,8 @@
-// @ts-nocheck
 import { describe, test, expect } from 'vitest';
 import normalizeIconArgs from './normalize-icon-args.ts';
-
+/**
+ * eslint-disable
+ */
 describe(`💫 ${normalizeIconArgs.name}()`, () => {
 	const EXPECTED_KEYS = ['prefix', 'iconName'];
 	test('undefined', () => {

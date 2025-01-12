@@ -10,9 +10,16 @@
 
 	let icon: [string, string] = $state(['', '']);
 
+	type FaLibraryRuntime = {
+		definitions: {
+			[key: string]: [];
+		};
+	};
+
 	onMount(async () => {
-		for (const libPrefix in (library as any).definitions) {
-			for (const libIcon in (library as any).definitions[libPrefix]) {
+		console.log(library);
+		for (const libPrefix in (library as unknown as FaLibraryRuntime).definitions) {
+			for (const libIcon in (library as unknown as FaLibraryRuntime).definitions[libPrefix]) {
 				icon = [libPrefix, libIcon];
 				await new Promise((resolve) => setTimeout(resolve, 1000));
 			}

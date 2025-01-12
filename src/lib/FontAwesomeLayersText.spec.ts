@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { describe, test, expect } from 'vitest';
 import { render } from '@testing-library/svelte';
 import LayersText from './__mocks__/LayersText.svelte';
@@ -6,7 +5,7 @@ import FontAwesomeLayersText, {
 	type FontAwesomeLayersTextProps
 } from './FontAwesomeLayersText.svelte';
 
-function renderLayersTextMock(props: FontAwesomeLayersTextProps) {
+function renderLayersTextMock(props?: FontAwesomeLayersTextProps) {
 	const result = render(LayersText, {
 		props
 	});
@@ -17,8 +16,8 @@ describe(`🧱 ${FontAwesomeLayersText.name}`, () => {
 	test('correctly composes layers', () => {
 		const memeText = 'DABURU KRASHU IKOZE!';
 		const container = renderLayersTextMock({ value: memeText });
-		const svg = container.querySelector('svg');
-		const text = container.querySelector('span');
+		const svg = container.querySelector('svg') as SVGElement;
+		const text = container.querySelector('span') as HTMLElement;
 		expect(svg.dataset.prefix).toBe('fas');
 		expect(svg.dataset.icon).toBe('circle');
 		expect(text.innerHTML).toBe(memeText);
@@ -26,13 +25,13 @@ describe(`🧱 ${FontAwesomeLayersText.name}`, () => {
 	test('does apply passed class attribute', () => {
 		const CUSTOM_CLASS = 'custom-class';
 		const container = renderLayersTextMock({ class: CUSTOM_CLASS });
-		const text = container.querySelector('span');
+		const text = container.querySelector('span') as HTMLElement;
 		expect([...text.classList].includes(CUSTOM_CLASS)).toBe(true);
 	});
 	test('does apply passed style attribute', () => {
 		const CUSTOM_STYLE = 'color: red;';
 		const container = renderLayersTextMock({ style: CUSTOM_STYLE });
-		const text = container.querySelector('span');
+		const text = container.querySelector('span') as HTMLElement;
 		expect(text.getAttribute('style')).toBe(CUSTOM_STYLE);
 	});
 	describe('correctly handles properties', () => {
@@ -41,12 +40,12 @@ describe(`🧱 ${FontAwesomeLayersText.name}`, () => {
 			test('string value', () => {
 				const memeText = 'KANSEI DORIFTO';
 				const container = renderLayersTextMock({ value: memeText });
-				const text = container.querySelector('span');
+				const text = container.querySelector('span') as HTMLElement;
 				expect(text.innerHTML).toBe(memeText);
 			});
 			test(NOT_PROVIDED_CASE, () => {
 				const container = renderLayersTextMock();
-				const text = container.querySelector('span');
+				const text = container.querySelector('span') as HTMLElement;
 				expect(text.innerHTML).toBe('');
 			});
 		});
@@ -56,7 +55,7 @@ describe(`🧱 ${FontAwesomeLayersText.name}`, () => {
 					value: 'Misfiringu system',
 					transform: 'rotate-95'
 				});
-				const text = container.querySelector('span');
+				const text = container.querySelector('span') as HTMLElement;
 				expect(text.style.getPropertyValue('transform').includes('rotate(95deg)')).toBe(true);
 			});
 			test('value as object', () => {
@@ -66,14 +65,14 @@ describe(`🧱 ${FontAwesomeLayersText.name}`, () => {
 						rotate: 95
 					}
 				});
-				const text = container.querySelector('span');
+				const text = container.querySelector('span') as HTMLElement;
 				expect(text.style.getPropertyValue('transform').includes('rotate(95deg)')).toBe(true);
 			});
 			test(NOT_PROVIDED_CASE, () => {
 				const container = renderLayersTextMock({
 					value: 'ULTRA-SUPER-LATE-BRAKING!'
 				});
-				const text = container.querySelector('span');
+				const text = container.querySelector('span') as HTMLElement;
 				expect(text.style.getPropertyValue('transform')).toBe('');
 			});
 		});
@@ -83,7 +82,7 @@ describe(`🧱 ${FontAwesomeLayersText.name}`, () => {
 					value: 'Sil-80',
 					counter: false
 				});
-				const counter = container.querySelector('.fa-layers-counter');
+				const counter = container.querySelector('.fa-layers-counter') as HTMLElement;
 				expect(counter).toBe(null);
 			});
 			test('true', () => {
@@ -92,13 +91,13 @@ describe(`🧱 ${FontAwesomeLayersText.name}`, () => {
 					value: hachiRoku,
 					counter: true
 				});
-				const counter = container.querySelector('.fa-layers-counter');
+				const counter = container.querySelector('.fa-layers-counter') as HTMLElement;
 				expect(counter).not.toBe(null);
 				expect(counter.innerHTML).toBe(hachiRoku);
 			});
 			test(NOT_PROVIDED_CASE, () => {
 				const container = renderLayersTextMock();
-				const counter = container.querySelector('.fa-layers-counter');
+				const counter = container.querySelector('.fa-layers-counter') as HTMLElement;
 				expect(counter).toBe(null);
 			});
 		});
@@ -115,7 +114,7 @@ describe(`🧱 ${FontAwesomeLayersText.name}`, () => {
 					value,
 					position: 'top-right'
 				});
-				const text = container.querySelector('span');
+				const text = container.querySelector('span') as HTMLElement;
 				expect([...text.classList].includes(TOP_RIGHT_CLASS)).toBe(true);
 			});
 			test('"top-left"', () => {
@@ -123,7 +122,7 @@ describe(`🧱 ${FontAwesomeLayersText.name}`, () => {
 					value,
 					position: 'top-left'
 				});
-				const text = container.querySelector('span');
+				const text = container.querySelector('span') as HTMLElement;
 				expect([...text.classList].includes(TOP_LEFT_CLASS)).toBe(true);
 			});
 			test('"bottom-right"', () => {
@@ -131,7 +130,7 @@ describe(`🧱 ${FontAwesomeLayersText.name}`, () => {
 					value,
 					position: 'bottom-right'
 				});
-				const text = container.querySelector('span');
+				const text = container.querySelector('span') as HTMLElement;
 				expect([...text.classList].includes(BOTTOM_RIGHT_CLASS)).toBe(true);
 			});
 			test('"bottom-left"', () => {
@@ -139,14 +138,14 @@ describe(`🧱 ${FontAwesomeLayersText.name}`, () => {
 					value,
 					position: 'bottom-left'
 				});
-				const text = container.querySelector('span');
+				const text = container.querySelector('span') as HTMLElement;
 				expect([...text.classList].includes(BOTTOM_LEFT_CLASS)).toBe(true);
 			});
 			test(NOT_PROVIDED_CASE, () => {
 				const container = renderLayersTextMock({
 					value
 				});
-				const text = container.querySelector('span');
+				const text = container.querySelector('span') as HTMLElement;
 				expect(
 					[...text.classList].every(
 						(item) =>

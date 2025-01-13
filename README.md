@@ -2,8 +2,6 @@
 
 ![npm](https://img.shields.io/npm/v/fontawesome-svelte)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/fontawesome-svelte)
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/yukipastelcat/svelte-fontawesome/CI/master?label=CI)
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/yukipastelcat/svelte-fontawesome/CI/develop?label=CI%20%28beta%29)
 
 ## Introduction
 
